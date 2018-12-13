@@ -11,6 +11,8 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from '@material-ui/core/Button';
 
+import ConfirmDialog from './ConfirmDialog';
+
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { saveToDoListProgress, deleteToDoList } from '../redux/actions';
@@ -37,13 +39,27 @@ class ToDoList extends React.Component {
 	constructor(props) {
 	    super(props);
 	    this.toDoList = React.createRef();
+	    this.state={
+	    	alertLogic: false
+	    }
   	}
+
+  	openAlert() {
+		this.setState({alertLogic: true});
+	}
+
+	closeAlert() {
+		this.setState({alertLogic: false});
+	}
+
+	confirm() {
+		this.props.deleteToDoList();
+	}
 
 	render() {
 		const { classes }          = this.props;
 		const toDoListItems        = this.props.toDoListItems;
 		const saveToDoListProgress = this.props.saveToDoListProgress;
-		const deleteToDoList       = this.props.deleteToDoList;
 
 		const toDoItems = toDoListItems.map((item, index) => {
 			return(
@@ -65,6 +81,11 @@ class ToDoList extends React.Component {
 		//console.log(toDoItems);
 		return (
 			<div>
+				<ConfirmDialog
+					closeAlert={() => this.closeAlert()}
+					alertLogic={this.state.alertLogic}
+					confirm={() => this.confirm()}
+				/>
 				<h3>To Do List</h3>
 				<FormGroup>
 					<RootRef rootRef={this.toDoList}>
@@ -87,10 +108,7 @@ class ToDoList extends React.Component {
 						variant="contained"
 						color="secondary"
 						onClick={() => {
-							const result = window.confirm("Do you really want to delete your list?");
-							if(result === true) {
-								deleteToDoList();
-							}
+							this.openAlert();
 						}}
 					>
 						Trash List
