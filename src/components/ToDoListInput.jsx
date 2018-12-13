@@ -6,8 +6,9 @@ import { withStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
-
 import Button from '@material-ui/core/Button';
+
+import AlertDialog from './AlertDialog';
 
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
@@ -28,14 +29,35 @@ const styles = theme => ({
 });
 
 class ToDoListInput extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			alertLogic: false,
+		};
+	}
+
+	openAlert() {
+		this.setState({alertLogic: true});
+	}
+
+	closeAlert() {
+		this.setState({alertLogic: false});
+	}
+
 	render() {
 		const { classes }               = this.props;
 		const toDoItem                  = this.props.toDoItem;
 		const handleToDoItemTextChange  = this.props.handleToDoItemTextChange;
 		const clearToDoInputText        = this.props.clearToDoInputText;
 		const saveToDoListItem          = this.props.saveToDoListItem;
+
 		return (
 			<div>
+				<AlertDialog
+					closeAlert={() => this.closeAlert()}
+					alertLogic={this.state.alertLogic}
+				/>
 				<div className={classes.container}>
 					<FormControl className={classes.formControl} variant="outlined">
 						<InputLabel
@@ -55,7 +77,7 @@ class ToDoListInput extends React.Component {
 							onKeyPress={(e) => {
 								if(e.key === 'Enter') {
 									if(toDoItem === '') {
-										alert('please enter an item');
+										this.openAlert();
       									return;
 									}
 									saveToDoListItem(toDoItem.trim());
@@ -73,7 +95,7 @@ class ToDoListInput extends React.Component {
 						color="primary"
 						onClick={() => {
 							if(toDoItem === '') {
-								alert('please enter an item');
+								this.openAlert();
       							return;
 							}
 							saveToDoListItem(toDoItem.trim());
