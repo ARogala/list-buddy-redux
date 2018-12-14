@@ -25,3 +25,13 @@ export const deleteToDoList = () => {
 		type: 'DELETE_TODOLIST',
 	};
 };
+
+
+export const updateTemplate = (template) => {
+	return {
+		type: 'UPDATE_TEMPLATE',
+		payload: {
+			template: template
+		}
+	};
+};

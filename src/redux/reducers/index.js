@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 
 const initialState = {
-	toDoListItems: []
+	toDoListItems: [],
+	template: ''
 }
 
 const toDoListItems =  (toDoListItems = initialState.toDoListItems, action) => {
@@ -27,9 +28,20 @@ const toDoListItems =  (toDoListItems = initialState.toDoListItems, action) => {
 	}
 };
 
+const template = (template = initialState.template, action) => {
+	switch(action.type) {
+		case 'UPDATE_TEMPLATE':
+			console.log(action.payload.template);
+			return template;
+		default:
+			return template;
+	}
+};
+
 
 
 
 export default combineReducers({
 	toDoListItems: toDoListItems,
+	template: template
 });

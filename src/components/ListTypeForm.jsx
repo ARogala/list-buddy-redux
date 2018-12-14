@@ -8,6 +8,11 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 
+import { updateTemplate } from '../redux/actions';
+
+import { connect } from 'react-redux';
+import { compose } from 'recompose';
+
 const styles = theme => ({
 	formControl: {
 		margin: theme.spacing.unit,
@@ -93,7 +98,14 @@ class ListTypeForm extends React.Component {
 	}
 }
 
-export default withStyles(styles)(ListTypeForm);
+const mapDispatchToProps = {
+	updateTemplate: updateTemplate
+};
+
+export default compose(
+	withStyles(styles),
+	connect(null,mapDispatchToProps)
+)(ListTypeForm);
 
 ListTypeForm.propTypes = {
   updateTemplate: PropTypes.func.isRequired,
