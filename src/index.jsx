@@ -8,6 +8,10 @@ import App from './App';
 import { loadState, saveState } from './localStorage';
 import * as serviceWorker from './serviceWorker';
 
+/*
+ If you produced reducer with combineReducers,
+ persistedState must be a plain object with the same shape as the keys passed to it.
+*/
 const persistedState = loadState();
 
 const store = createStore(
@@ -16,8 +20,10 @@ const store = createStore(
 );
 
 store.subscribe(() => {
+	console.log(store.getState());
 	saveState({
-		toDoListItems: store.getState().toDoListItems
+		toDoListItems: store.getState().toDoListItems,
+		template: store.getState().template
 	});
 });
 
