@@ -6,6 +6,7 @@ import ToDoListInput from './components/ToDoListInput';
 import ListTypeForm from './components/ListTypeForm';
 
 import CategorizedListItemForm from './components/CategorizedListItemForm';
+import CategorizedList from './components/CategorizedList';
 
 import list from './list.svg';
 import GitHub from './img/github.svg';
@@ -89,6 +90,7 @@ class App extends Component {
 							<div>
 								<ListTypeForm />
 								<CategorizedListItemForm />
+								<CategorizedList />
 							</div>
 						)}
 					</section>
