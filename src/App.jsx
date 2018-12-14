@@ -5,6 +5,8 @@ import ToDoList from './components/ToDoList';
 import ToDoListInput from './components/ToDoListInput';
 import ListTypeForm from './components/ListTypeForm';
 
+import CategorizedListItemForm from './components/CategorizedListItemForm';
+
 import list from './list.svg';
 import GitHub from './img/github.svg';
 import LinkedIn from './img/linkedin.svg';
@@ -86,6 +88,7 @@ class App extends Component {
 						):(
 							<div>
 								<ListTypeForm />
+								<CategorizedListItemForm />
 							</div>
 						)}
 					</section>
