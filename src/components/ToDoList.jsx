@@ -21,9 +21,6 @@ const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
   },
-  deletItemButton: {
-  	margin: 'auto 0px auto auto',
-  },
   btnContainer: {
   	textAlign: 'center'
   },
@@ -123,7 +120,6 @@ class ToDoList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-	console.log(state);
 	return{
 		toDoListItems: state.toDoListItems
 	};

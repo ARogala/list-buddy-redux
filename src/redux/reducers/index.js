@@ -9,8 +9,7 @@ const toDoListItems =  (toDoListItems = initialState.toDoListItems, action) => {
 	let length;
 	switch(action.type) {
 		case 'SAVE_TODOLISTITEM':
-			length = toDoListItems.length;
-			return [...toDoListItems,{toDoItem: action.payload.item, checked: action.payload.checked, id: length}];
+			return [...toDoListItems, {toDoItem: action.payload.item, checked: action.payload.checked}];
 		case 'SAVE_TODOLISTPROGRESS':
 			newItems = [...toDoListItems];
 			length = action.payload.toDoListRef.length;

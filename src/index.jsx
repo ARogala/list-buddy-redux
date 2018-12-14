@@ -9,14 +9,13 @@ import { loadState, saveState } from './localStorage';
 import * as serviceWorker from './serviceWorker';
 
 const persistedState = loadState();
-console.log(persistedState);
+
 const store = createStore(
 	reducers,
 	persistedState
 );
 
 store.subscribe(() => {
-	console.log(store.getState());
 	saveState({
 		toDoListItems: store.getState().toDoListItems
 	});
