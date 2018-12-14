@@ -42,6 +42,11 @@ class ListTypeForm extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
+		if(this.state.template === 'Choose a Template'){
+			alert('Please Choose a Template');
+			this.resetForm();
+      		return;
+		}
 		this.props.updateTemplate(this.state.template);
 		this.resetForm();
 	}
