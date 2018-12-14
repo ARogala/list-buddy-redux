@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import ToDoList from './components/ToDoList';
 import ToDoListInput from './components/ToDoListInput';
+import ListTypeForm from './components/ListTypeForm';
 
 import list from './list.svg';
 import GitHub from './img/github.svg';
@@ -67,6 +68,7 @@ class App extends Component {
 						</div>
 					</header>
 					<section>
+						<ListTypeForm />
 						<ToDoListInput
 							toDoItem={this.state.toDoItem}
                     		handleToDoItemTextChange={(toDoItem)=>this.handleToDoItemTextChange(toDoItem)}
