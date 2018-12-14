@@ -8,6 +8,8 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 
+import AlertDialog from './AlertDialog';
+
 import { saveCategorizedListItem } from '../redux/actions';
 
 import { connect } from 'react-redux';
@@ -32,8 +34,17 @@ class CategorizedListItemForm extends React.Component {
 		super(props);
 		this.state={
 			item: '',
-			itemCategory: '--Please Select an Item Category--'
+			itemCategory: '--Please Select an Item Category--',
+			alertLogic: false
 		};
+	}
+
+	openAlert() {
+		this.setState({alertLogic: true});
+	}
+
+	closeAlert() {
+		this.setState({alertLogic: false});
 	}
 
 	handleItemChange(e) {
@@ -47,7 +58,7 @@ class CategorizedListItemForm extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		if(this.state.itemCategory === '--Please Select an Item Category--') {
-			alert('Pleae Select and Item Category');
+			this.openAlert();
 		}
 		else {
 			this.props.saveCategorizedListItem(this.state.item, this.state.itemCategory, this.props.template);
@@ -126,6 +137,12 @@ class CategorizedListItemForm extends React.Component {
 
 		return (
 			<form onSubmit={(e) => this.handleSubmit(e)}>
+				<AlertDialog
+					closeAlert={() => this.closeAlert()}
+					alertLogic={this.state.alertLogic}
+					alertTitle='Item Category'
+					alertContentText='Pleae Select and Item Category'
+				/>
 				<fieldset>
 					<legend>Enter Item and Item Category</legend>
 					<FormControl className={classes.formControl}>
