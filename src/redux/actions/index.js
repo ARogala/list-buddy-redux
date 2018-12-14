@@ -36,12 +36,14 @@ export const updateTemplate = (template) => {
 	};
 };
 
-export const saveCategorizedListItem = (item, itemCategory) => {
+export const saveCategorizedListItem = (item, itemCategory, template) => {
 	return {
 		type: 'SAVE_CATEGORIZEDLISTITEM',
 		payload: {
 			item: item,
-			itemCategory: itemCategory
+			checked: false,
+			itemCategory: itemCategory,
+			template: template
 		}
 	};
 };

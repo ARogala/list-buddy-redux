@@ -23,7 +23,8 @@ store.subscribe(() => {
 	console.log(store.getState());
 	saveState({
 		toDoListItems: store.getState().toDoListItems,
-		template: store.getState().template
+		template: store.getState().template,
+		categorizedListItems: store.getState().categorizedListItems
 	});
 });
 

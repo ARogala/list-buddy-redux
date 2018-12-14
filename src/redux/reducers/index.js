@@ -41,8 +41,12 @@ const template = (template = initialState.template, action) => {
 const categorizedListItems = (categorizedListItems = initialState.categorizedListItems, action) => {
 	switch(action.type) {
 		case 'SAVE_CATEGORIZEDLISTITEM':
-			console.log('item ',action.payload.item, 'category', action.payload.itemCategory);
-			return categorizedListItems;
+			const item     = action.payload.item;
+			const checked  = action.payload.checked;
+			const category = action.payload.itemCategory;
+			const template = action.payload.template;
+			const id       = categorizedListItems.length;
+			return [...categorizedListItems, {item: item, checked: checked, category: category, template: template, id: id}];
 		default:
 			return categorizedListItems;
 	}

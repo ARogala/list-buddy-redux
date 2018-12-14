@@ -50,7 +50,7 @@ class CategorizedListItemForm extends React.Component {
 			alert('Pleae Select and Item Category');
 		}
 		else {
-			this.props.saveCategorizedListItem(this.state.item, this.state.itemCategory);
+			this.props.saveCategorizedListItem(this.state.item, this.state.itemCategory, this.props.template);
 			this.resetForm();
 		}
 	}
