@@ -8,6 +8,8 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 
+import { saveCategorizedListItem } from '../redux/actions';
+
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 
@@ -171,10 +173,14 @@ const mapStateToProps = (state) => {
 	};
 };
 
+const mapDispactchToProps = {
+	saveCategorizedListItem: saveCategorizedListItem
+};
+
 
 export default compose(
 	withStyles(styles),
-	connect(mapStateToProps, null)
+	connect(mapStateToProps, mapDispactchToProps)
 )(CategorizedListItemForm);
 
 

@@ -35,3 +35,13 @@ export const updateTemplate = (template) => {
 		}
 	};
 };
+
+export const saveCategorizedListItem = (item, itemCategory) => {
+	return {
+		type: 'SAVE_CATEGORIZEDLISTITEM',
+		payload: {
+			item: item,
+			itemCategory: itemCategory
+		}
+	};
+};

@@ -2,7 +2,8 @@ import { combineReducers } from 'redux';
 
 const initialState = {
 	toDoListItems: [],
-	template: 'To Do'
+	template: 'To Do',
+	categorizedListItems: []
 }
 
 const toDoListItems =  (toDoListItems = initialState.toDoListItems, action) => {
@@ -37,10 +38,19 @@ const template = (template = initialState.template, action) => {
 	}
 };
 
+const categorizedListItems = (categorizedListItems = initialState.categorizedListItems, action) => {
+	switch(action.type) {
+		case 'SAVE_CATEGORIZEDLISTITEM':
+			console.log('item ',action.payload.item, 'category', action.payload.itemCategory);
+			return categorizedListItems;
+		default:
+			return categorizedListItems;
+	}
 
-
+};
 
 export default combineReducers({
 	toDoListItems: toDoListItems,
-	template: template
+	template: template,
+	categorizedListItems: categorizedListItems
 });
