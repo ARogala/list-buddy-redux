@@ -75,6 +75,8 @@ class ListTypeForm extends React.Component {
 				<AlertDialog
 					closeAlert={() => this.closeAlert()}
 					alertLogic={this.state.alertLogic}
+					alertTitle='Choose a Template'
+					alertContentText='Please Choose a Template'
 				/>
 				<fieldset>
 					<legend>Select A List Template</legend>
