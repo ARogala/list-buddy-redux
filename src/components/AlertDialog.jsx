@@ -12,6 +12,8 @@ class AlertDialog extends React.Component {
     render() {
         const closeAlert=this.props.closeAlert;
         const alertLogic=this.props.alertLogic;
+        const alertTitle=this.props.alertTitle;
+        const alertContentText=this.props.alertContentText;
         return (
             <div>
                 <Dialog
@@ -20,10 +22,10 @@ class AlertDialog extends React.Component {
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                 >
-                    <DialogTitle id="alert-dialog-title">{"Please enter a list item."}</DialogTitle>
+                    <DialogTitle id="alert-dialog-title">{alertTitle}</DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">
-                          To save a item to your list please enter it in the input field provided.
+                          {alertContentText}
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
@@ -41,5 +43,7 @@ export default AlertDialog;
 
 AlertDialog.propTypes = {
     closeAlert: PropTypes.func.isRequired,
-    alertLogic: PropTypes.bool.isRequired
+    alertLogic: PropTypes.bool.isRequired,
+    alertTitle: PropTypes.string.isRequired,
+    alertContentText: PropTypes.string.isRequired
 }

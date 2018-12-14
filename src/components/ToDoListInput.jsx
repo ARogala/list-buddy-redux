@@ -57,6 +57,8 @@ class ToDoListInput extends React.Component {
 				<AlertDialog
 					closeAlert={() => this.closeAlert()}
 					alertLogic={this.state.alertLogic}
+					alertTitle='Please enter a list item.'
+					alertContentText='To save a item to your list please enter it in the input field provided.'
 				/>
 				<div className={classes.container}>
 					<FormControl className={classes.formControl} variant="outlined">

@@ -8,6 +8,8 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 
+import AlertDialog from './AlertDialog';
+
 import { updateTemplate } from '../redux/actions';
 
 import { connect } from 'react-redux';
@@ -32,8 +34,17 @@ class ListTypeForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state={
-			template: 'Choose a Template'
+			template: 'Choose a Template',
+			alertLogic: false
 		};
+	}
+
+	openAlert() {
+		this.setState({alertLogic: true});
+	}
+
+	closeAlert() {
+		this.setState({alertLogic: false});
 	}
 
 	handleTemplateChange(e) {
@@ -42,8 +53,8 @@ class ListTypeForm extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		if(this.state.template === 'Choose a Template'){
-			alert('Please Choose a Template');
+		if(this.state.template === 'Choose a Template') {
+			this.openAlert();
 			this.resetForm();
       		return;
 		}
@@ -61,6 +72,10 @@ class ListTypeForm extends React.Component {
 		const { classes } = this.props;
 		return (
 			<form onSubmit={(e) => this.handleSubmit(e)}>
+				<AlertDialog
+					closeAlert={() => this.closeAlert()}
+					alertLogic={this.state.alertLogic}
+				/>
 				<fieldset>
 					<legend>Select A List Template</legend>
 					<FormControl className={classes.formControl}>
