@@ -25,3 +25,12 @@ export const deleteToDoList = () => {
 		type: 'DELETE_TODOLIST',
 	};
 };
+
+export const deleteToDoListItem = (id) => {
+	return {
+		type: 'DELETE_TODOLISTITEM',
+		payload: {
+			id: id
+		}
+	}
+}

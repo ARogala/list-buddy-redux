@@ -15,11 +15,14 @@ import ConfirmDialog from './ConfirmDialog';
 
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
-import { saveToDoListProgress, deleteToDoList } from '../redux/actions';
+import { saveToDoListProgress, deleteToDoList, deleteToDoListItem } from '../redux/actions';
 
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
+  },
+  deletItemButton: {
+  	margin: 'auto 0px auto auto',
   },
   btnContainer: {
   	textAlign: 'center'
@@ -60,6 +63,7 @@ class ToDoList extends React.Component {
 		const { classes }          = this.props;
 		const toDoListItems        = this.props.toDoListItems;
 		const saveToDoListProgress = this.props.saveToDoListProgress;
+		const deleteToDoListItem   = this.props.deleteToDoListItem;
 
 		const toDoItems = toDoListItems.map((item, index) => {
 			return(
@@ -75,6 +79,14 @@ class ToDoList extends React.Component {
 						}
 						label={item.toDoItem}
 					/>
+					<Button
+						className={classes.deletItemButton}
+						variant="outlined"
+						color="secondary"
+						onClick={() => deleteToDoListItem(index)}
+					>
+						Delete
+					</Button>
 				</ListItem>
 			);
 		});
@@ -128,7 +140,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
 	saveToDoListProgress: saveToDoListProgress,
-	deleteToDoList: deleteToDoList
+	deleteToDoList: deleteToDoList,
+	deleteToDoListItem: deleteToDoListItem
 };
 
 
@@ -142,5 +155,6 @@ ToDoList.propTypes = {
   toDoListItems: PropTypes.array.isRequired,
   saveToDoListProgress: PropTypes.func.isRequired,
   deleteToDoList: PropTypes.func.isRequired,
+  deleteToDoListItem: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired
 }
