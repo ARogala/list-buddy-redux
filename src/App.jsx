@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import ToDoList from './components/ToDoList';
 import ToDoListInput from './components/ToDoListInput';
@@ -13,6 +14,9 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+
+import { connect } from 'react-redux';
+import { compose } from 'recompose';
 
 const styles = theme => ({
   root: {
@@ -56,6 +60,7 @@ class App extends Component {
 
   render() {
   	const { classes } = this.props;
+  	const template = this.props.template;
     return (
 		<Grid container className={classes.root}>
 			<Grid item xs={12}>
@@ -68,13 +73,21 @@ class App extends Component {
 						</div>
 					</header>
 					<section>
-						<ListTypeForm />
-						<ToDoListInput
-							toDoItem={this.state.toDoItem}
-                    		handleToDoItemTextChange={(toDoItem)=>this.handleToDoItemTextChange(toDoItem)}
-                    		clearToDoInputText={()=>this.clearToDoInputText()}
-						/>
-						<ToDoList />
+						{(template === 'To Do') ? (
+							<div>
+								<ListTypeForm />
+								<ToDoListInput
+									toDoItem={this.state.toDoItem}
+		                    		handleToDoItemTextChange={(toDoItem)=>this.handleToDoItemTextChange(toDoItem)}
+		                    		clearToDoInputText={()=>this.clearToDoInputText()}
+								/>
+								<ToDoList />
+							</div>
+						):(
+							<div>
+								<ListTypeForm />
+							</div>
+						)}
 					</section>
 					<footer className={classes.footer}>
 						<div>
@@ -89,5 +102,22 @@ class App extends Component {
   }
 }
 
-export default withStyles(styles)(App);
+const mapStateToProps = (state) => {
+	return{
+		template: state.template
+	};
+};
+
+export default compose(
+	withStyles(styles),
+	connect(mapStateToProps,null)
+)(App);
+
+App.propTypes = {
+  classes: PropTypes.object.isRequired,
+  template: PropTypes.string.isRequired
+}
+
+
+
 
