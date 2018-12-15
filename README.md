@@ -1,3 +1,19 @@
+## List Buddy
+
+Check out the app: https://listbuddy.surge.sh
+
+The classic list application but with some extra features. List data is saved with the browser’s local storage API and list templates have been added.
+
+I wrote this little app to learn the basics of Redux and to take a tour of the Material-UI component library. I must confess Redux took me a while to understand and implement but after getting the basics down I really like it. Redux helps make data flow in React apps much clearer!
+
+I learned a lot making this little app and hope you enjoy it. I use it for making grocery lists.
+
+##Dependencies
+
+https://material-ui.com/
+
+https://redux.js.org/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
