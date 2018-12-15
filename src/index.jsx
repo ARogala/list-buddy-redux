@@ -20,7 +20,7 @@ const store = createStore(
 );
 
 store.subscribe(() => {
-	console.log(store.getState());
+	//console.log(store.getState());
 	saveState({
 		toDoListItems: store.getState().toDoListItems,
 		template: store.getState().template,

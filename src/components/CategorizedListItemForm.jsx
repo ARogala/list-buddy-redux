@@ -77,7 +77,6 @@ class CategorizedListItemForm extends React.Component {
 		const { classes } = this.props;
 		const template = this.props.template;
 		let select;
-		console.log(template);
 		if(template === 'Grocery') {
 			select = (
 				<FormControl className={classes.formControl}>

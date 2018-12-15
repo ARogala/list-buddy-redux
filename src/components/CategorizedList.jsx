@@ -14,6 +14,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import Button from '@material-ui/core/Button';
 
+import ConfirmDialog from './ConfirmDialog';
+
 import { deleteCategorizedList, saveCategorizedListProgress } from '../redux/actions';
 
 import { connect } from 'react-redux';
@@ -51,13 +53,27 @@ class CategorizedList extends React.Component {
 	constructor(props) {
 	    super(props);
 	    this.categorizedList = React.createRef();
+	    this.state={
+	    	alertLogic: false
+	    }
   	}
+
+  	openAlert() {
+		this.setState({alertLogic: true});
+	}
+
+	closeAlert() {
+		this.setState({alertLogic: false});
+	}
+
+	confirm() {
+		this.props.deleteCategorizedList(this.props.template);
+	}
 
 	render() {
 		const { classes }                 = this.props;
 		const template                    = this.props.template;
 		const listItems                   = this.props.categorizedListItems;
-		const deleteCategorizedList       = this.props.deleteCategorizedList;
 		const saveCategorizedListProgress = this.props.saveCategorizedListProgress;
 
 		let categorizedListItems = groupBy(listItems, 'template');
@@ -147,6 +163,11 @@ class CategorizedList extends React.Component {
 			}
 			return (
 				<div>
+					<ConfirmDialog
+						closeAlert={() => this.closeAlert()}
+						alertLogic={this.state.alertLogic}
+						confirm={() => this.confirm()}
+					/>
 					<h3>{template} List</h3>
 					<FormGroup>
 						<RootRef rootRef={this.categorizedList}>
@@ -169,7 +190,7 @@ class CategorizedList extends React.Component {
 							className={classes.button}
 							variant="contained"
 							color="secondary"
-							onClick={() => deleteCategorizedList(template)}
+							onClick={() => this.openAlert()}
 						>
 							Trash List
 						</Button>
