@@ -5,7 +5,7 @@ import { createStore } from 'redux';
 
 import reducers from './redux/reducers';
 import App from './App';
-import { loadState, saveState } from './localStorage';
+import { loadState, saveState } from './modules/localStorage';
 import * as serviceWorker from './serviceWorker';
 
 /*

@@ -11,11 +11,11 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from '@material-ui/core/Button';
 
-import ConfirmDialog from './ConfirmDialog';
+import ConfirmDialog from '../Dialogs/ConfirmDialog';
 
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
-import { saveToDoListProgress, deleteToDoList } from '../redux/actions';
+import { saveToDoListProgress, deleteToDoList } from '../../redux/actions';
 
 const styles = theme => ({
   button: {

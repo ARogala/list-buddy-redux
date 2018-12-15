@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import groupBy from './groupBy.js';
+import groupBy from '../../modules/groupBy.js';
 
 import { withStyles } from '@material-ui/core/styles';
 import RootRef from '@material-ui/core/RootRef';
@@ -14,9 +14,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import Button from '@material-ui/core/Button';
 
-import ConfirmDialog from './ConfirmDialog';
+import ConfirmDialog from '../Dialogs/ConfirmDialog';
 
-import { deleteCategorizedList, saveCategorizedListProgress } from '../redux/actions';
+import { deleteCategorizedList, saveCategorizedListProgress } from '../../redux/actions';
 
 import { connect } from 'react-redux';
 import { compose } from 'recompose';

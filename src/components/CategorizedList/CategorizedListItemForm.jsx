@@ -8,9 +8,9 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 
-import AlertDialog from './AlertDialog';
+import AlertDialog from '../Dialogs/AlertDialog';
 
-import { saveCategorizedListItem } from '../redux/actions';
+import { saveCategorizedListItem } from '../../redux/actions';
 
 import { connect } from 'react-redux';
 import { compose } from 'recompose';

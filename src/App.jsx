@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import ToDoList from './components/ToDoList';
-import ToDoListInput from './components/ToDoListInput';
-import ListTypeForm from './components/ListTypeForm';
+import ToDoList from './components/ToDoList/ToDoList';
+import ToDoListInput from './components/ToDoList/ToDoListInput';
+import ListTemplateForm from './components/ListTemplateForm/ListTemplateForm';
 
-import CategorizedListItemForm from './components/CategorizedListItemForm';
-import CategorizedList from './components/CategorizedList';
+import CategorizedListItemForm from './components/CategorizedList/CategorizedListItemForm';
+import CategorizedList from './components/CategorizedList/CategorizedList';
 
-import list from './list.svg';
+import list from './img/list.svg';
 import GitHub from './img/github.svg';
 import LinkedIn from './img/linkedin.svg';
 
@@ -78,7 +78,7 @@ class App extends Component {
 					<section>
 						{(template === 'To Do') ? (
 							<div>
-								<ListTypeForm />
+								<ListTemplateForm />
 								<ToDoListInput
 									toDoItem={this.state.toDoItem}
 		                    		handleToDoItemTextChange={(toDoItem)=>this.handleToDoItemTextChange(toDoItem)}
@@ -88,7 +88,7 @@ class App extends Component {
 							</div>
 						):(
 							<div>
-								<ListTypeForm />
+								<ListTemplateForm />
 								<CategorizedListItemForm />
 								<CategorizedList />
 							</div>

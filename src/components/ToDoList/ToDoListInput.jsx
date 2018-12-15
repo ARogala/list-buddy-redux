@@ -8,11 +8,11 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
 
-import AlertDialog from './AlertDialog';
+import AlertDialog from '../Dialogs/AlertDialog';
 
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
-import { saveToDoListItem } from '../redux/actions';
+import { saveToDoListItem } from '../../redux/actions';
 
 
 const styles = theme => ({
