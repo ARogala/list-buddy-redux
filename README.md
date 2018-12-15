@@ -8,7 +8,7 @@ I wrote this little app to learn the basics of Redux and to take a tour of the M
 
 I learned a lot making this little app and hope you enjoy it. I use it for making grocery lists.
 
-##Dependencies
+## Dependencies
 
 https://material-ui.com/
 
