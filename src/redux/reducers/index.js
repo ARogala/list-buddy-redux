@@ -39,14 +39,53 @@ const template = (template = initialState.template, action) => {
 };
 
 const categorizedListItems = (categorizedListItems = initialState.categorizedListItems, action) => {
+	let item;
+	let checked;
+	let category;
+	let template;
+	let id;
 	switch(action.type) {
 		case 'SAVE_CATEGORIZEDLISTITEM':
-			const item     = action.payload.item;
-			const checked  = action.payload.checked;
-			const category = action.payload.itemCategory;
-			const template = action.payload.template;
-			const id       = categorizedListItems.length;
+			item     = action.payload.item;
+			checked  = action.payload.checked;
+			category = action.payload.itemCategory;
+			template = action.payload.template;
+			id       = categorizedListItems.length;
 			return [...categorizedListItems, {item: item, checked: checked, category: category, template: template, id: id}];
+		case 'SAVE_CATEGORIZEDLISTPROGRESS':
+			const newCategorizedListItems           = [...categorizedListItems];
+			const categorizedListRef                = action.payload.categorizedListRef;
+			const categorizedListRefLength          = categorizedListRef.length;
+    		const categorizedListItemsLength        = categorizedListItems.length;
+			//console.log(categorizedListRef);
+    		//console.log(categorizedListRef[0].childNodes[1].childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[1].checked);
+
+			/*consider optimizing this algorithm.
+			Loop through the categorized list
+			Loop through the categorized list child nodes (indidvidual list items)
+			get each list items id and current checked state
+			if the list items id matches the list items id in storage update the checked state
+			finally update state and local storage
+			*/
+			for(let i = 0; i < categorizedListRefLength; i++) {
+			    //console.log(categorizedListRef[i].childNodes[1].childNodes.length);
+			    const categorizedListRefChildNodeLength = categorizedListRef[i].childNodes[1].childNodes.length;
+
+			    for(let j = 0; j < categorizedListRefChildNodeLength; j++) {
+				    const id = parseInt(categorizedListRef[i].childNodes[1].childNodes[j].childNodes[0].childNodes[0].childNodes[0].childNodes[1].value);
+				    const checked = categorizedListRef[i].childNodes[1].childNodes[j].childNodes[0].childNodes[0].childNodes[0].childNodes[1].checked;
+
+			        for(let k = 0; k < categorizedListItemsLength; k++) {
+				        if(newCategorizedListItems[k].id === id) {
+				        	newCategorizedListItems[k].checked = checked;
+				        }
+			        }
+			    }
+		    }
+			return newCategorizedListItems;
+		case 'DELETE_CATEGORIZEDLIST':
+			template = action.payload.template;
+			return categorizedListItems.filter(item => item.template !== template);
 		default:
 			return categorizedListItems;
 	}

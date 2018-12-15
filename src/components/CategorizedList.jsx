@@ -14,6 +14,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import Button from '@material-ui/core/Button';
 
+import { deleteCategorizedList, saveCategorizedListProgress } from '../redux/actions';
+
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 
@@ -167,7 +169,7 @@ class CategorizedList extends React.Component {
 							className={classes.button}
 							variant="contained"
 							color="secondary"
-							onClick={() => deleteCategorizedList()}
+							onClick={() => deleteCategorizedList(template)}
 						>
 							Trash List
 						</Button>
@@ -185,13 +187,14 @@ class CategorizedList extends React.Component {
 
 const mapStateToProps = (state) => {
 	return{
-		template: state.template,
-		categorizedListItems: state.categorizedListItems
+		categorizedListItems: state.categorizedListItems,
+		template: state.template
 	};
 };
 
 const mapDispactchToProps = {
-	//saveCategorizedListItem: saveCategorizedListItem
+	deleteCategorizedList: deleteCategorizedList,
+	saveCategorizedListProgress: saveCategorizedListProgress
 };
 
 

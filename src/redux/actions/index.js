@@ -47,3 +47,21 @@ export const saveCategorizedListItem = (item, itemCategory, template) => {
 		}
 	};
 };
+
+export const deleteCategorizedList = (template) => {
+	return {
+		type: 'DELETE_CATEGORIZEDLIST',
+		payload: {
+			template: template
+		}
+	};
+};
+
+export const saveCategorizedListProgress = (categorizedListRef) => {
+	return {
+		type: 'SAVE_CATEGORIZEDLISTPROGRESS',
+		payload: {
+			categorizedListRef: categorizedListRef
+		}
+	};
+}
