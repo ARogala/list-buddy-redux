@@ -46,6 +46,12 @@ const styles = theme => ({
   listText: {
   	textAlign: 'center',
   	padding: '0'
+  },
+  tip: {
+  	textAlign: 'center',
+  	fontWeight: 'bold',
+  	fontSize: '20px',
+  	padding: '5px'
   }
 });
 
@@ -200,7 +206,7 @@ class CategorizedList extends React.Component {
 		}
 		else {
 			return (
-				<div>Add some items to your {template} list</div>
+				<div className={classes.tip}>Add some items to your {template} list</div>
 			);
 		}
 	}
